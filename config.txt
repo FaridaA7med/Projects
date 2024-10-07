@@ -1,0 +1,55 @@
+int gig0/0
+ip add 1.1.1.1 255.255.255.0
+no sh
+int gig0/1
+ip add 2.2.2.1 255.255.255.0
+no sh
+exit
+router ospf 1
+network 2.2.2.0 0.255.255.255 area 0
+network 1.1.1.0 0.255.255.255 area 0
+exit
+---------
+int gig0/0
+ip add 1.1.1.2 255.255.255.0
+no sh
+int gig0/1
+ip add 3.3.3.2 255.255.255.0
+no sh
+int gig0/2
+ip add 6.6.6.2 255.255.255.0
+no sh
+exit
+router ospf 1
+network 2.2.2.0 0.255.255.255 area 0
+network 3.3.3.0 0.255.255.255 area 0
+network 6.6.6.0 0.255.255.255 area 1
+exit
+-----------------
+int gig0/0
+ip add 3.3.3.3 255.255.255.0
+no sh
+int gig0/1
+ip add 4.4.4.3 255.255.255.0
+no sh
+exit
+router ospf 1
+network 3.3.3.0 0.255.255.255 area 0
+network 4.4.4.0 0.255.255.255 area 0
+exit
+-----------------------
+int gig0/0
+ip add 2.2.2.4 255.255.255.0
+no sh
+int gig0/1
+ip add 4.4.4.4 255.255.255.0
+no sh
+int gig0/2
+ip add 5.5.5.4 255.255.255.0
+no sh
+exit
+router ospf 1
+network 2.2.2.0 0.255.255.255 area 0
+network 4.4.4.0 0.255.255.255 area 0
+network 5.5.5.0 0.255.255.255 area 2
+exit
